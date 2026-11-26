@@ -1,0 +1,822 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Punjabi Tadka Restaurant – Pimpri-Chinchwad</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+        <style>
+        :root{--maroon:#7b1e1e;--maroon-d:#561010;--saffron:#f4a300;--saffron-l:#ffe3a3;--cream:#fff7e8;--ink:#2b1b14;--muted:#7a6a5f;--line:#ecdcc2;--card:#fff;--green:#1f8a3b;--red:#c62828;--r:16px;--shadow:0 2px 10px rgba(80,30,10,.08)}
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{-webkit-text-size-adjust:100%}
+        body{font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--cream);color:var(--ink);line-height:1.45;padding-bottom:150px;min-height:100vh}
+        button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+        input,select,textarea{font:inherit;color:inherit}
+        .wrap{max-width:1100px;margin:0 auto;padding:0 14px}
+        h1,h2,h3{font-family:'Yatra One','Poppins',serif;font-weight:400;letter-spacing:.2px}
+        /* header */
+        header.top{background:linear-gradient(135deg,var(--maroon),var(--maroon-d));color:#fff;position:relative}
+        header.top:after{content:"";display:block;height:8px;background:repeating-linear-gradient(90deg,var(--saffron) 0 14px,#fff7e8 14px 18px,#d9342b 18px 32px)}
+        .hrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap}
+        .brand{display:flex;align-items:center;gap:10px}
+        .brand .logo{width:44px;height:44px;border-radius:50%;background:var(--saffron);display:grid;place-items:center;font-size:24px}
+        .brand h1{font-size:24px;line-height:1.1}
+        .brand small{display:block;opacity:.85;font-size:11.5px}
+        .live{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+        .chip{background:rgba(255,255,255,.14);border-radius:12px;padding:5px 10px;font-size:12px;line-height:1.25}
+        .chip b{display:block;font-size:14px;font-weight:600}
+        .chip.clock b{font-variant-numeric:tabular-nums;font-size:16px;color:var(--saffron-l)}
+        .loc{background:rgba(0,0,0,.18);font-size:12px;padding:6px 0;text-align:center}
+        .loc a{color:var(--saffron-l);text-decoration:none}
+        /* nav */
+        nav.tabs{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom)}
+        nav.tabs button{flex:1;padding:7px 2px 6px;font-size:10.5px;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:1px;position:relative;min-width:0}
+        nav.tabs button .ic{font-size:20px;line-height:1.1}
+        nav.tabs button.on{color:var(--maroon);font-weight:600}
+        nav.tabs button.on:before{content:"";position:absolute;top:0;left:22%;right:22%;height:3px;background:var(--saffron);border-radius:0 0 3px 3px}
+        .badge{position:absolute;top:3px;left:55%;background:var(--red);color:#fff;border-radius:10px;font-size:10px;padding:0 5px;min-width:16px;text-align:center}
+        @media(min-width:900px){
+        nav.tabs{position:sticky;top:0;bottom:auto;border-top:0;border-bottom:1px solid var(--line);justify-content:center;gap:4px;padding:0}
+        nav.tabs button{flex:0 0 auto;flex-direction:row;gap:7px;font-size:14px;padding:12px 18px}
+        nav.tabs button.on:before{top:auto;bottom:0;left:10px;right:10px;border-radius:3px 3px 0 0}
+        .badge{position:static;margin-left:2px}
+        body{padding-bottom:90px}
+        }
+        main{padding:16px 0 20px}
+        .view{display:none}.view.on{display:block}
+        .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow)}
+        .sec-title{display:flex;align-items:baseline;justify-content:space-between;margin:18px 0 10px;gap:8px}
+        .sec-title h2{font-size:22px;color:var(--maroon)}
+        .sec-title span{font-size:12px;color:var(--muted)}
+        .grid{display:grid;gap:12px}
+        .g2{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+        .g3{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+        /* hero */
+        .hero{background:linear-gradient(135deg,#fff,var(--saffron-l));border:1px solid var(--line);border-radius:22px;padding:24px 18px;display:grid;gap:12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+        .hero:after{content:"🌶️";position:absolute;right:-6px;bottom:-22px;font-size:110px;opacity:.14;transform:rotate(-14deg)}
+        .hero h2{font-size:clamp(26px,6vw,40px);color:var(--maroon);line-height:1.1}
+        .hero p{max-width:520px;color:#5c4a3f}
+        .btn{background:var(--maroon);color:#fff;border-radius:12px;padding:10px 16px;font-weight:600;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;transition:transform .08s}
+        .btn:active{transform:scale(.97)}
+        .btn.alt{background:var(--saffron);color:var(--ink)}
+        .btn.ghost{background:#fff;color:var(--maroon);border:1.5px solid var(--maroon)}
+        .btn.sm{padding:6px 12px;font-size:13px;border-radius:10px}
+        .btn[disabled]{opacity:.45;cursor:not-allowed}
+        .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+        .hl{display:flex;gap:10px;align-items:flex-start}.hl .e{font-size:26px}.hl b{display:block;color:var(--maroon)}.hl span{font-size:13px;color:var(--muted)}
+        .cat-tile{text-align:center;padding:14px 8px;cursor:pointer}.cat-tile .e{font-size:30px}.cat-tile b{display:block;font-size:14px}.cat-tile span{font-size:11.5px;color:var(--muted)}
+        /* veg markers */
+        .vm{display:inline-grid;place-items:center;width:15px;height:15px;border:1.6px solid var(--green);border-radius:3px;flex:none;vertical-align:middle}
+        .vm:after{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+        .vm.nv{border-color:var(--red)}.vm.nv:after{background:var(--red)}
+        .tag{font-size:10.5px;padding:1px 7px;border-radius:20px;background:var(--saffron-l);color:#7a4a00;font-weight:600;white-space:nowrap}
+        .tag.c{background:#fde4e1;color:#9b2318}.tag.m{background:#f3dcd0;color:#6d2c10}.tag.v{background:#dff3e3;color:#17632c}
+        /* tables */
+        .picker{position:sticky;top:0;z-index:20;background:var(--cream);padding:8px 0 10px;margin:-4px 0 6px}
+        @media(min-width:900px){.picker{top:46px}}
+        .picker .lbl{font-size:12px;color:var(--muted);margin-bottom:5px}
+        .tbl-row{display:flex;gap:6px;overflow-x:auto;padding-bottom:3px;scrollbar-width:none}
+        .tbl-row::-webkit-scrollbar{display:none}
+        .tb{flex:0 0 auto;min-width:46px;height:46px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-weight:600;display:grid;place-items:center;line-height:1;position:relative}
+        .tb small{display:block;font-size:9px;font-weight:400;color:var(--muted)}
+        .tb.on{background:var(--maroon);color:#fff;border-color:var(--maroon)}.tb.on small{color:var(--saffron-l)}
+        .tb .dot{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--saffron)}
+        .warn{background:#fff3cd;border:1px solid #f0d77a;border-radius:12px;padding:9px 12px;font-size:13px}
+        /* menu */
+        .filters{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+        .pills{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+        .pills::-webkit-scrollbar{display:none}
+        .pill{flex:0 0 auto;padding:6px 13px;border-radius:20px;background:#fff;border:1.5px solid var(--line);font-size:13px;white-space:nowrap}
+        .pill.on{background:var(--saffron);border-color:var(--saffron);font-weight:600}
+        .search{width:100%;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff}
+        .dish{display:flex;gap:12px;padding:12px}
+        .dish .ic{flex:none;width:58px;height:58px;border-radius:14px;background:var(--saffron-l);display:grid;place-items:center;font-size:30px}
+        .dish .bd{flex:1;min-width:0}
+        .dish .nm{display:flex;gap:6px;align-items:center;font-weight:600;font-size:14.5px}
+        .dish p{font-size:12px;color:var(--muted);margin:2px 0 4px}
+        .dish .tags{display:flex;gap:4px;flex-wrap:wrap}
+        .dish .ft{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+        .price{font-weight:700;color:var(--maroon)}
+        .step{display:inline-flex;align-items:center;background:var(--maroon);color:#fff;border-radius:10px;overflow:hidden}
+        .step button{width:32px;height:30px;font-size:18px;color:#fff}.step b{min-width:24px;text-align:center;font-size:14px}
+        .cartbar{position:fixed;left:10px;right:10px;bottom:68px;z-index:25;background:var(--ink);color:#fff;border-radius:16px;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 6px 20px rgba(0,0,0,.3);max-width:760px;margin:0 auto}
+        @media(min-width:900px){.cartbar{bottom:16px}}
+        .cartbar[hidden]{display:none}
+        /* order */
+        .line{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14px;align-items:center}
+        .line:last-child{border-bottom:0}
+        .tot{display:flex;justify-content:space-between;font-size:14px;padding:2px 0;color:var(--muted)}
+        .tot.g{font-size:18px;font-weight:700;color:var(--ink);padding-top:6px}
+        textarea,.inp,select.inp{width:100%;padding:9px 12px;border-radius:10px;border:1.5px solid var(--line);background:#fff}
+        label.f{display:block;font-size:12px;color:var(--muted);margin:10px 0 4px}
+        .status{display:inline-flex;gap:4px;align-items:center;font-size:12px;font-weight:600;padding:2px 10px;border-radius:20px}
+        .st-Placed{background:#e8eefc;color:#274690}.st-Preparing{background:#fff0c2;color:#7a5200}.st-Served{background:#dff3e3;color:#17632c}.st-Paid{background:#e9e9e9;color:#444}.st-Pending{background:#fde4e1;color:#9b2318}
+        .prog{display:flex;gap:4px;margin:8px 0 2px}.prog i{flex:1;height:5px;border-radius:3px;background:var(--line)}.prog i.on{background:var(--green)}
+        .pay-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+        .pay-opt{border:2px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center;background:#fff}
+        .pay-opt .e{font-size:28px;display:block}.pay-opt.on{border-color:var(--maroon);background:#fff6f0}
+        .qrbox{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px;width:min(230px,100%);margin:0 auto}
+        .qrbox svg{display:block;width:100%;height:auto}
+        .stars{display:flex;gap:4px}.stars button{font-size:30px;line-height:1;filter:grayscale(1);opacity:.4}.stars button.on{filter:none;opacity:1}
+        .ok{background:#e7f6ea;border:1px solid #b5dfbd;border-radius:12px;padding:12px;font-size:14px}
+        /* history / dashboard */
+        .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+        .kpi{padding:12px}.kpi span{font-size:12px;color:var(--muted)}.kpi b{display:block;font-size:24px;color:var(--maroon);font-family:'Yatra One',serif;font-weight:400}
+        .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+        .tcell{border-radius:14px;padding:10px;border:1.5px solid var(--line);background:#fff;font-size:12px}
+        .tcell b{font-size:15px;display:block}
+        .tcell.busy{background:#fff3d6;border-color:var(--saffron)}.tcell.cash{background:#fde4e1;border-color:#e59a92}
+        .bar{display:grid;grid-template-columns:minmax(80px,32%) 1fr auto;gap:8px;align-items:center;font-size:13px;margin:6px 0}
+        .bar .tr{height:10px;background:#f4ead6;border-radius:6px}
+        .bar .fl{height:10px;background:var(--maroon);border-radius:0 5px 5px 0;min-width:2px}
+        .bar .fl.sf{background:var(--saffron)}
+        .bar .lb{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .bar .vl{font-weight:600;font-variant-numeric:tabular-nums}
+        .rec{padding:11px 12px}.rec .hd{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+        .rec .sub{font-size:12.5px;color:var(--muted);margin-top:3px}
+        .empty{text-align:center;color:var(--muted);padding:26px 10px;font-size:14px}
+        .toast{position:fixed;left:50%;bottom:130px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:9px 16px;border-radius:24px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:90vw;text-align:center}
+        .toast.show{opacity:1;transform:translateX(-50%)}
+        footer{background:var(--maroon-d);color:#f5e6c8;font-size:13px;padding:22px 0 8px;margin-top:26px}
+        footer a{color:var(--saffron-l)}
+        .twocol{display:grid;gap:14px}
+        @media(min-width:760px){.twocol{grid-template-columns:1.2fr 1fr}.twocol.eq{grid-template-columns:1fr 1fr}}
+        .muted{color:var(--muted);font-size:13px}
+        @media print{nav.tabs,.cartbar{display:none}}
+        </style>
+        </head>
+        <body>
+        <header class="top">
+        <div class="wrap">
+        <div class="hrow">
+        <div class="brand"><div class="logo">🍛</div><div><h1>Punjabi Tadka</h1><small>Authentic Punjabi Restaurant · Veg &amp; Non-Veg</small></div></div>
+        <div class="live" aria-live="off">
+            <div class="chip">Day<b id="hDay">–</b></div>
+            <div class="chip">Date<b id="hDate">–</b></div>
+            <div class="chip clock">Time<b id="hClock">--:--:--</b></div>
+        </div>
+        </div>
+        </div>
+        <div class="loc">📍 Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018 · <a id="mapTop" target="_blank" rel="noopener">View on map</a></div>
+        </header>
+
+        <nav class="tabs" id="nav" aria-label="Main">
+        <button data-a="go" data-v="home"><span class="ic">🏠</span>Home</button>
+        <button data-a="go" data-v="menu"><span class="ic">🍽️</span>Menu</button>
+        <button data-a="go" data-v="order"><span class="ic">🧾</span>My Table<span class="badge" id="bdg" hidden></span></button>
+        <button data-a="go" data-v="feedback"><span class="ic">💬</span>Feedback</button>
+        <button data-a="go" data-v="history"><span class="ic">🕘</span>History</button>
+        <button data-a="go" data-v="dashboard"><span class="ic">📊</span>Dashboard</button>
+        </nav>
+
+        <main class="wrap">
+        <section class="view" id="v-home"></section>
+        <section class="view" id="v-menu"></section>
+        <section class="view" id="v-order"></section>
+        <section class="view" id="v-feedback"></section>
+        <section class="view" id="v-history"></section>
+        <section class="view" id="v-dashboard"></section>
+        </main>
+
+        <div class="cartbar" id="cartbar" hidden></div>
+        <div class="toast" id="toast" role="status"></div>
+
+        <footer>
+        <div class="wrap">
+        <b>Punjabi Tadka</b><br>
+        Shop No 1, near Sant Tukaram Mandir, Sant Tukaram Nagar, Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018<br>
+        <a id="mapFoot" target="_blank" rel="noopener">Open in Google Maps</a>
+        <p style="opacity:.7;margin-top:10px">© <span id="yr"></span> Punjabi Tadka · Prices in ₹ include no packaging · 5% GST added at billing</p>
+        </div>
+        </footer>
+
+        <script>
+        /* Minimal QR Code generator (byte mode, ECC L/M, versions 1-20). */
+        var QR = (function () {
+        var ECC_PER_BLOCK = {
+            L: [-1, 7, 10, 15, 20, 26, 18, 20, 24, 30, 18, 20, 24, 26, 30, 22, 24, 28, 30, 28, 28],
+            M: [-1, 10, 16, 26, 18, 24, 16, 18, 22, 22, 26, 30, 22, 22, 24, 24, 28, 28, 26, 26, 26]
+        };
+        var NUM_BLOCKS = {
+            L: [-1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 4, 4, 4, 4, 4, 6, 6, 6, 6, 7, 8],
+            M: [-1, 1, 1, 1, 2, 2, 4, 4, 4, 5, 5, 5, 8, 9, 9, 10, 10, 11, 13, 14, 16]
+        };
+        var FMT = { L: 1, M: 0 };
+
+        function rawModules(v) {
+            var r = (16 * v + 128) * v + 64;
+            if (v >= 2) { var n = Math.floor(v / 7) + 2; r -= (25 * n - 10) * n - 55; if (v >= 7) r -= 36; }
+            return r;
+        }
+        function dataCodewords(v, e) {
+            return Math.floor(rawModules(v) / 8) - ECC_PER_BLOCK[e][v] * NUM_BLOCKS[e][v];
+        }
+        function utf8(str) {
+            var out = [], s = unescape(encodeURIComponent(str));
+            for (var i = 0; i < s.length; i++) out.push(s.charCodeAt(i));
+            return out;
+        }
+        function mul(x, y) {
+            var z = 0;
+            for (var i = 7; i >= 0; i--) { z = (z << 1) ^ ((z >>> 7) * 0x11d); z ^= ((y >>> i) & 1) * x; }
+            return z;
+        }
+        function divisor(deg) {
+            var r = []; for (var i = 0; i < deg - 1; i++) r.push(0); r.push(1);
+            var root = 1;
+            for (i = 0; i < deg; i++) {
+            for (var j = 0; j < r.length; j++) { r[j] = mul(r[j], root); if (j + 1 < r.length) r[j] ^= r[j + 1]; }
+            root = mul(root, 2);
+            }
+            return r;
+        }
+        function remainder(data, div) {
+            var r = div.map(function () { return 0; });
+            data.forEach(function (b) {
+            var f = b ^ r.shift(); r.push(0);
+            div.forEach(function (c, i) { r[i] ^= mul(c, f); });
+            });
+            return r;
+        }
+        function bit(x, i) { return ((x >>> i) & 1) !== 0; }
+
+        function encode(text, ecc) {
+            ecc = ecc || 'M';
+            var bytes = utf8(text), ver, cap;
+            for (ver = 1; ver <= 20; ver++) {
+            var ccBits = ver < 10 ? 8 : 16;
+            if (4 + ccBits + bytes.length * 8 <= dataCodewords(ver, ecc) * 8) break;
+            }
+            if (ver > 20) throw new Error('Text too long for QR');
+            var bits = [];
+            function put(val, len) { for (var i = len - 1; i >= 0; i--) bits.push((val >>> i) & 1); }
+            put(4, 4); put(bytes.length, ver < 10 ? 8 : 16);
+            bytes.forEach(function (b) { put(b, 8); });
+            cap = dataCodewords(ver, ecc) * 8;
+            put(0, Math.min(4, cap - bits.length));
+            while (bits.length % 8) bits.push(0);
+            for (var pad = 0xec; bits.length < cap; pad ^= 0xec ^ 0x11) put(pad, 8);
+            var data = [];
+            for (var i = 0; i < bits.length; i += 8) { var b = 0; for (var k = 0; k < 8; k++) b = (b << 1) | bits[i + k]; data.push(b); }
+
+            // error correction + interleave
+            var nb = NUM_BLOCKS[ecc][ver], eccLen = ECC_PER_BLOCK[ecc][ver];
+            var raw = Math.floor(rawModules(ver) / 8), nShort = nb - raw % nb, shortLen = Math.floor(raw / nb);
+            var div = divisor(eccLen), blocks = [], pos = 0;
+            for (i = 0; i < nb; i++) {
+            var len = shortLen - eccLen + (i < nShort ? 0 : 1);
+            var dat = data.slice(pos, pos + len); pos += len;
+            var e = remainder(dat, div);
+            if (i < nShort) dat.push(0);
+            blocks.push(dat.concat(e));
+            }
+            var all = [];
+            for (i = 0; i < blocks[0].length; i++)
+            blocks.forEach(function (bl, j) { if (i !== shortLen - eccLen || j >= nShort) all.push(bl[i]); });
+
+            // matrix
+            var size = ver * 4 + 17, mod = [], fn = [];
+            for (i = 0; i < size; i++) { mod.push(new Array(size).fill(false)); fn.push(new Array(size).fill(false)); }
+            function setF(x, y, v) { mod[y][x] = v; fn[y][x] = true; }
+            for (i = 0; i < size; i++) { setF(6, i, i % 2 === 0); setF(i, 6, i % 2 === 0); }
+            function finder(cx, cy) {
+            for (var dy = -4; dy <= 4; dy++) for (var dx = -4; dx <= 4; dx++) {
+                var d = Math.max(Math.abs(dx), Math.abs(dy)), x = cx + dx, y = cy + dy;
+                if (x >= 0 && x < size && y >= 0 && y < size) setF(x, y, d !== 2 && d !== 4);
+            }
+            }
+            finder(3, 3); finder(size - 4, 3); finder(3, size - 4);
+            var ap = [];
+            if (ver > 1) {
+            var na = Math.floor(ver / 7) + 2, step = Math.ceil((ver * 4 + 4) / (na * 2 - 2)) * 2;
+            ap = [6]; for (var p = size - 7; ap.length < na; p -= step) ap.splice(1, 0, p);
+            }
+            ap.forEach(function (ax, a) { ap.forEach(function (ay, b) {
+            if ((a === 0 && b === 0) || (a === 0 && b === ap.length - 1) || (a === ap.length - 1 && b === 0)) return;
+            for (var dy = -2; dy <= 2; dy++) for (var dx = -2; dx <= 2; dx++) setF(ax + dx, ay + dy, Math.max(Math.abs(dx), Math.abs(dy)) !== 1);
+            }); });
+            function drawFormat(mask) {
+            var d = (FMT[ecc] << 3) | mask, rem = d;
+            for (var i = 0; i < 10; i++) rem = (rem << 1) ^ ((rem >>> 9) * 0x537);
+            var f = ((d << 10) | rem) ^ 0x5412;
+            for (i = 0; i <= 5; i++) setF(8, i, bit(f, i));
+            setF(8, 7, bit(f, 6)); setF(8, 8, bit(f, 7)); setF(7, 8, bit(f, 8));
+            for (i = 9; i < 15; i++) setF(14 - i, 8, bit(f, i));
+            for (i = 0; i < 8; i++) setF(size - 1 - i, 8, bit(f, i));
+            for (i = 8; i < 15; i++) setF(8, size - 15 + i, bit(f, i));
+            setF(8, size - 8, true);
+            }
+            drawFormat(0);
+            if (ver >= 7) {
+            var r = ver; for (i = 0; i < 12; i++) r = (r << 1) ^ ((r >>> 11) * 0x1f25);
+            var vb = (ver << 12) | r;
+            for (i = 0; i < 18; i++) { var c = bit(vb, i), a = size - 11 + i % 3, b2 = Math.floor(i / 3); setF(a, b2, c); setF(b2, a, c); }
+            }
+            // codewords
+            var idx = 0;
+            for (var right = size - 1; right >= 1; right -= 2) {
+            if (right === 6) right = 5;
+            for (var vert = 0; vert < size; vert++) for (var j = 0; j < 2; j++) {
+                var x = right - j, up = ((right + 1) & 2) === 0, y = up ? size - 1 - vert : vert;
+                if (!fn[y][x] && idx < all.length * 8) { mod[y][x] = bit(all[idx >>> 3], 7 - (idx & 7)); idx++; }
+            }
+            }
+            function applyMask(m) {
+            for (var y = 0; y < size; y++) for (var x = 0; x < size; x++) {
+                var inv;
+                switch (m) {
+                case 0: inv = (x + y) % 2 === 0; break;
+                case 1: inv = y % 2 === 0; break;
+                case 2: inv = x % 3 === 0; break;
+                case 3: inv = (x + y) % 3 === 0; break;
+                case 4: inv = (Math.floor(x / 3) + Math.floor(y / 2)) % 2 === 0; break;
+                case 5: inv = x * y % 2 + x * y % 3 === 0; break;
+                case 6: inv = (x * y % 2 + x * y % 3) % 2 === 0; break;
+                default: inv = ((x + y) % 2 + x * y % 3) % 2 === 0;
+                }
+                if (!fn[y][x] && inv) mod[y][x] = !mod[y][x];
+            }
+            }
+            function penalty() {
+            var pen = 0, dark = 0, x, y;
+            for (y = 0; y < size; y++) {
+                var rr = 1, cr = 1;
+                for (x = 0; x < size; x++) {
+                if (mod[y][x]) dark++;
+                if (x > 0) { if (mod[y][x] === mod[y][x - 1]) { rr++; if (rr === 5) pen += 3; else if (rr > 5) pen++; } else rr = 1; }
+                if (y > 0) { if (mod[y][x] === mod[y - 1][x]) { /* counted below */ } }
+                if (x < size - 1 && y < size - 1 && mod[y][x] === mod[y][x + 1] && mod[y][x] === mod[y + 1][x] && mod[y][x] === mod[y + 1][x + 1]) pen += 3;
+                }
+            }
+            for (x = 0; x < size; x++) {
+                var run = 1;
+                for (y = 1; y < size; y++) {
+                if (mod[y][x] === mod[y - 1][x]) { run++; if (run === 5) pen += 3; else if (run > 5) pen++; } else run = 1;
+                }
+            }
+            var total = size * size, k = Math.ceil(Math.abs(dark * 20 - total * 10) / total) - 1;
+            return pen + k * 10;
+            }
+            var best = 0, bestPen = Infinity;
+            for (var m = 0; m < 8; m++) {
+            applyMask(m); drawFormat(m);
+            var pn = penalty(); if (pn < bestPen) { bestPen = pn; best = m; }
+            applyMask(m); // undo
+            }
+            applyMask(best); drawFormat(best);
+            return { size: size, modules: mod, version: ver };
+        }
+
+        function toSvg(text, opts) {
+            opts = opts || {};
+            var q = encode(text, opts.ecc || 'M'), border = 4, n = q.size + border * 2, d = [];
+            for (var y = 0; y < q.size; y++) for (var x = 0; x < q.size; x++)
+            if (q.modules[y][x]) d.push('M' + (x + border) + ',' + (y + border) + 'h1v1h-1z');
+            return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + n + ' ' + n + '" shape-rendering="crispEdges" role="img" aria-label="' + (opts.label || 'QR code') + '"><rect width="100%" height="100%" fill="#fff"/><path d="' + d.join('') + '" fill="#000"/></svg>';
+        }
+        return { encode: encode, toSvg: toSvg };
+        })();
+
+
+        </script>
+        <script>
+        (function(){
+        'use strict';
+        var TZ='Asia/Kolkata', GST=0.05, TABLES=10;
+        var ADDRESS='Shop No 1, near Sant Tukaram Mandir, Sant Tukaram Nagar, Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018';
+        var MAP='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent('Punjabi Tadka '+ADDRESS);
+
+        /* ---------- Menu ---------- */
+        var CATS=[
+        {id:'thali',name:'Thalis',e:'🍛',note:'Full meals'},
+        {id:'starter',name:'Starters',e:'🍢',note:'Tandoor & fry'},
+        {id:'soup',name:'Soups',e:'🥣',note:'Hot & comforting'},
+        {id:'noodles',name:'Noodles',e:'🍜',note:'Indo-Chinese'},
+        {id:'rice',name:'Rice',e:'🍚',note:'Biryani & pulao'},
+        {id:'drink',name:'Cold Drinks',e:'🥤',note:'5 chilled picks'},
+        {id:'dessert',name:'Desserts',e:'🍨',note:'2 sweet endings'}
+        ];
+        /* t: v=veg, c=chicken, m=mutton */
+        var MENU=[
+        {id:'t1',c:'thali',t:'v',n:'Punjabi Veg Thali',d:'Dal tadka, mix veg, 3 roti, jeera rice, raita, salad, papad',p:189,g:'Popular'},
+        {id:'t2',c:'thali',t:'v',n:'Paneer Special Thali',d:'Paneer butter masala, dal makhani, 3 roti, rice, raita, salad',p:229,g:'Bestseller'},
+        {id:'t3',c:'thali',t:'v',n:'Dal Tadka Thali',d:'Dal tadka, aloo gobi, 2 roti, rice, pickle, salad',p:159},
+        {id:'t4',c:'thali',t:'c',n:'Chicken Thali',d:'Butter chicken, dal, 3 roti, jeera rice, salad',p:259,g:'Popular'},
+        {id:'t5',c:'thali',t:'m',n:'Mutton Thali',d:'Mutton rogan josh, dal, 3 roti, jeera rice, salad',p:329},
+        {id:'t6',c:'thali',t:'m',n:'Tadka Maha Thali (Non-Veg)',d:'Chicken + mutton curry, dal makhani, 4 roti, biryani rice, sweet',p:449,g:"Chef's special"},
+        {id:'s1',c:'starter',t:'v',n:'Paneer Tikka',d:'Tandoor-grilled paneer with mint chutney',p:220,g:'Bestseller'},
+        {id:'s2',c:'starter',t:'v',n:'Hara Bhara Kebab',d:'Spinach & green pea patties, pan-seared',p:180},
+        {id:'s3',c:'starter',t:'v',n:'Crispy Corn',d:'Golden fried corn tossed with peppers',p:160},
+        {id:'s4',c:'starter',t:'c',n:'Chicken Tikka',d:'Charcoal-grilled boneless chicken, 8 pcs',p:260,g:'Bestseller'},
+        {id:'s5',c:'starter',t:'c',n:'Tandoori Chicken (Half)',d:'Classic tandoori marinade, smoky char',p:290},
+        {id:'s6',c:'starter',t:'c',n:'Chicken 65',d:'Spicy fried chicken with curry leaves',p:240,g:'Spicy'},
+        {id:'s7',c:'starter',t:'m',n:'Mutton Seekh Kebab',d:'Minced mutton skewers from the tandoor',p:320,g:"Chef's special"},
+        {id:'s8',c:'starter',t:'m',n:'Mutton Boti Kebab',d:'Tender mutton cubes, slow-marinated',p:340},
+        {id:'p1',c:'soup',t:'v',n:'Tomato Soup',d:'Creamy tomato with garlic croutons',p:110},
+        {id:'p2',c:'soup',t:'v',n:'Veg Sweet Corn Soup',d:'Mild, silky and light',p:120},
+        {id:'p3',c:'soup',t:'v',n:'Veg Hot & Sour Soup',d:'Peppery, tangy, loaded with veggies',p:120,g:'Spicy'},
+        {id:'p4',c:'soup',t:'c',n:'Chicken Sweet Corn Soup',d:'Shredded chicken in corn broth',p:150},
+        {id:'p5',c:'soup',t:'c',n:'Chicken Manchow Soup',d:'Spicy soup topped with crispy noodles',p:160,g:'Spicy'},
+        {id:'p6',c:'soup',t:'m',n:'Mutton Shorba',d:'Slow-simmered mutton broth with whole spices',p:190,g:"Chef's special"},
+        {id:'n1',c:'noodles',t:'v',n:'Veg Hakka Noodles',d:'Wok-tossed noodles with crunchy vegetables',p:150},
+        {id:'n2',c:'noodles',t:'v',n:'Veg Schezwan Noodles',d:'Fiery schezwan sauce, spring onion',p:160,g:'Spicy'},
+        {id:'n3',c:'noodles',t:'v',n:'Paneer Chilli Noodles',d:'Paneer cubes in chilli-garlic noodles',p:190},
+        {id:'n4',c:'noodles',t:'c',n:'Chicken Hakka Noodles',d:'Classic hakka with chicken strips',p:190,g:'Popular'},
+        {id:'n5',c:'noodles',t:'c',n:'Chicken Schezwan Noodles',d:'Hot schezwan with juicy chicken',p:200,g:'Spicy'},
+        {id:'n6',c:'noodles',t:'m',n:'Mutton Keema Noodles',d:'Minced mutton masala tossed noodles',p:240},
+        {id:'r1',c:'rice',t:'v',n:'Jeera Rice',d:'Basmati tempered with cumin',p:120},
+        {id:'r2',c:'rice',t:'v',n:'Veg Pulao',d:'Fragrant rice with seasonal vegetables',p:150},
+        {id:'r3',c:'rice',t:'v',n:'Paneer Biryani',d:'Dum-cooked with paneer and saffron',p:220,g:'Popular'},
+        {id:'r4',c:'rice',t:'c',n:'Chicken Biryani',d:'Hyderabadi-style dum biryani, raita',p:260,g:'Bestseller'},
+        {id:'r5',c:'rice',t:'c',n:'Chicken Fried Rice',d:'Wok-tossed rice, egg-free, chicken pieces',p:200},
+        {id:'r6',c:'rice',t:'m',n:'Mutton Dum Biryani',d:'Tender mutton, long-grain basmati, raita',p:330,g:"Chef's special"},
+        {id:'d1',c:'drink',t:'v',n:'Sweet Lassi',d:'Thick Punjabi curd lassi, chilled',p:80,g:'Bestseller'},
+        {id:'d2',c:'drink',t:'v',n:'Masala Chaas',d:'Spiced buttermilk with roasted cumin',p:50},
+        {id:'d3',c:'drink',t:'v',n:'Cold Coffee',d:'Creamy blended cold coffee',p:100},
+        {id:'d4',c:'drink',t:'v',n:'Fresh Lime Soda',d:'Sweet / salted, as you like',p:70},
+        {id:'d5',c:'drink',t:'v',n:'Mango Shake',d:'Made with ripe mango pulp and milk',p:110},
+        {id:'z1',c:'dessert',t:'v',n:'Gulab Jamun (2 pcs)',d:'Warm milk-solid dumplings in sugar syrup',p:80,g:'Popular'},
+        {id:'z2',c:'dessert',t:'v',n:'Kesar Kulfi',d:'Dense saffron-pistachio kulfi',p:110}
+        ];
+        var BY={};MENU.forEach(function(m){BY[m.id]=m});
+        var TLAB={v:'Veg',c:'Chicken',m:'Mutton'};
+
+        /* ---------- State ---------- */
+        var KEY='punjabi_tadka_v1', mem=null;
+        var S={orders:[],payments:[],feedback:[],carts:{},seq:0,pseq:0,table:null,
+        settings:{whatsapp:'',upi:'',pin:'1234'}};
+        (function load(){try{var r=localStorage.getItem(KEY);if(r){var o=JSON.parse(r);for(var k in o)S[k]=o[k];S.settings=Object.assign({whatsapp:'',upi:'',pin:'1234'},S.settings||{})}}catch(e){}})();
+        function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+        var UI={view:'home',cat:'all',diet:'all',q:'',payMode:'online',hist:'orders',histTable:'all',histRange:'all',
+        unlocked:false,rate:{o:0,f:0,s:0},lastFb:null,paidMsg:null,draft:{note:'',name:''},confirmReset:false,fbTable:''};
+
+        /* ---------- Helpers ---------- */
+        var $=function(s,r){return (r||document).querySelector(s)};
+        function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+        function inr(n){return '₹'+Number(n).toLocaleString('en-IN',{maximumFractionDigits:2})}
+        function dayKey(ts){return new Date(ts).toLocaleDateString('en-CA',{timeZone:TZ})}
+        function fmt(ts){return new Date(ts).toLocaleString('en-IN',{timeZone:TZ,day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true})}
+        function toast(msg){var t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(function(){t.classList.remove('show')},2200)}
+        function cart(t){return S.carts[t]||(S.carts[t]={})}
+        function cartCount(t){var c=S.carts[t]||{},n=0;for(var k in c)n+=c[k];return n}
+        function cartSub(t){var c=S.carts[t]||{},s=0;for(var k in c)s+=c[k]*BY[k].p;return s}
+        function tax(sub){return Math.round(sub*GST)}
+        function unpaid(t){return S.orders.filter(function(o){return o.table===t&&!o.paid&&!o.payId})}
+        function pendingCash(t){return S.orders.filter(function(o){return o.table===t&&!o.paid&&o.payId})}
+        function active(t){return S.orders.filter(function(o){return o.table===t&&!o.paid})}
+        function dot(m){return '<span class="vm'+(m.t==='v'?'':' nv')+'" title="'+TLAB[m.t]+'"></span>'}
+        function stars(n){return '★★★★★'.slice(0,n)+'☆☆☆☆☆'.slice(0,5-n)}
+        function waNum(){var d=(S.settings.whatsapp||'').replace(/\D/g,'');if(d.length===10)d='91'+d;return d}
+        function waLink(text){return 'https://wa.me/'+waNum()+'?text='+encodeURIComponent(text)}
+        function qr(text,label,ecc){try{return QR.toSvg(text,{label:label,ecc:ecc||'M'})}catch(e){return '<p class="muted">QR unavailable</p>'}}
+        function sum(a,f){return a.reduce(function(s,x){return s+f(x)},0)}
+
+        /* ---------- Clock ---------- */
+        function tick(){
+        var d=new Date();
+        $('#hDay').textContent=d.toLocaleDateString('en-IN',{timeZone:TZ,weekday:'long'});
+        $('#hDate').textContent=d.toLocaleDateString('en-IN',{timeZone:TZ,day:'2-digit',month:'short',year:'numeric'});
+        $('#hClock').textContent=d.toLocaleTimeString('en-IN',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true});
+        var els=document.querySelectorAll('[data-since]');
+        for(var i=0;i<els.length;i++){var s=Math.max(0,Math.floor((Date.now()-+els[i].dataset.since)/1000));
+        var h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;
+        els[i].textContent=(h?h+':'+String(m).padStart(2,'0'):m)+':'+String(x).padStart(2,'0')}
+        }
+
+        /* ---------- Views ---------- */
+        function go(v){
+        UI.view=v;
+        document.querySelectorAll('.view').forEach(function(e){e.classList.toggle('on',e.id==='v-'+v)});
+        document.querySelectorAll('#nav button').forEach(function(b){b.classList.toggle('on',b.dataset.v===v)});
+        render();window.scrollTo(0,0);
+        }
+        function render(){
+        ({home:rHome,menu:rMenu,order:rOrder,feedback:rFeedback,history:rHistory,dashboard:rDash})[UI.view]();
+        cartBar();badge();tick();
+        }
+        function badge(){
+        var b=$('#bdg'),n=S.table?cartCount(S.table):0;
+        b.hidden=!n;b.textContent=n;
+        }
+        function cartBar(){
+        var el=$('#cartbar'),t=S.table;
+        if(UI.view!=='menu'||!t||!cartCount(t)){el.hidden=true;return}
+        el.hidden=false;
+        el.innerHTML='<div><b>Table '+t+'</b> · '+cartCount(t)+' item'+(cartCount(t)>1?'s':'')+' · '+inr(cartSub(t))+'</div><button class="btn alt sm" data-a="go" data-v="order">View order →</button>';
+        }
+        function picker(){
+        var h='<div class="picker"><div class="lbl">'+(S.table?'Ordering for <b>Table '+S.table+'</b> — tap to change':'<b>Select your table number</b> to start ordering')+'</div><div class="tbl-row">';
+        for(var i=1;i<=TABLES;i++){h+='<button class="tb'+(S.table===i?' on':'')+'" data-a="table" data-n="'+i+'" aria-label="Table '+i+'">'+i+'<small>Table</small>'+(active(i).length||cartCount(i)?'<span class="dot" title="In use"></span>':'')+'</button>'}
+        return h+'</div></div>';
+        }
+
+        /* Home */
+        function rHome(){
+        var hl=[['🔥','Real Punjabi Tadka','Dal, curries and tandoor made with butter, ghee and fresh spices.'],
+        ['🥦🍗','Veg & Non-Veg','Paneer and vegetarian favourites, plus chicken and mutton dishes.'],
+        ['📱','Order From Your Seat','10 tables — each table orders and tracks food from its own phone.'],
+        ['💳','Online or Cash','Pay by UPI online or in cash, whichever you like.'],
+        ['⏱️','Live Order Timer','See how long ago you ordered and where your food is.'],
+        ['💬','WhatsApp Feedback','Scan our QR code and tell us how we did.']];
+        var h='<div class="hero"><h2>Welcome to Punjabi Tadka</h2><p>Hot from the tandoor, rich from the tadka. Pick your table, order from your seat and pay when you are done.</p><div class="row"><button class="btn" data-a="go" data-v="menu">🍽️ Order from your table</button><button class="btn ghost" data-a="go" data-v="feedback">💬 Give feedback</button></div></div>';
+        h+='<div class="sec-title"><h2>Highlights</h2></div><div class="grid g2">';
+        hl.forEach(function(x){h+='<div class="card hl"><div class="e">'+x[0]+'</div><div><b>'+x[1]+'</b><span>'+x[2]+'</span></div></div>'});
+        h+='</div><div class="sec-title"><h2>Our Menu</h2><span>Veg &amp; Non-Veg</span></div><div class="grid g3">';
+        CATS.forEach(function(c){var n=MENU.filter(function(m){return m.c===c.id}).length;
+        h+='<div class="card cat-tile" data-a="cat" data-c="'+c.id+'"><div class="e">'+c.e+'</div><b>'+c.name+'</b><span>'+n+' dishes</span></div>'});
+        h+='</div><div class="sec-title"><h2>Find Us</h2></div><div class="card twocol eq"><div><b>📍 Address</b><p class="muted" style="margin:4px 0 10px">'+esc(ADDRESS)+'</p><a class="btn sm" href="'+MAP+'" target="_blank" rel="noopener">Open in Google Maps</a></div>'+
+        '<div><b>Good to know</b><p class="muted" style="margin-top:4px">🪑 Tables 1 to 10 · 💳 UPI online &amp; cash · 🟢 Veg · 🔴 Non-veg (chicken &amp; mutton)</p></div></div>';
+        $('#v-home').innerHTML=h;
+        }
+
+        /* Menu */
+        function rMenu(){
+        var h=picker()+'<div class="filters"><input class="search" id="q" type="search" placeholder="Search dishes…" value="'+esc(UI.q)+'" aria-label="Search dishes"><div class="pills" id="catPills"></div><div class="pills" id="dietPills"></div></div><div id="menuList"></div>';
+        $('#v-menu').innerHTML=h;pills();menuList();
+        }
+        function pills(){
+        var c='<button class="pill'+(UI.cat==='all'?' on':'')+'" data-a="cat" data-c="all">All</button>';
+        CATS.forEach(function(x){c+='<button class="pill'+(UI.cat===x.id?' on':'')+'" data-a="cat" data-c="'+x.id+'">'+x.e+' '+x.name+'</button>'});
+        $('#catPills').innerHTML=c;
+        var D=[['all','All'],['v','🟢 Veg'],['nv','🔴 Non-Veg'],['c','Chicken'],['m','Mutton']],d='';
+        D.forEach(function(x){d+='<button class="pill'+(UI.diet===x[0]?' on':'')+'" data-a="diet" data-d="'+x[0]+'">'+x[1]+'</button>'});
+        $('#dietPills').innerHTML=d;
+        }
+        function dishCard(m){
+        var q=S.table&&S.carts[S.table]?S.carts[S.table][m.id]||0:0;
+        var ctl=q?'<div class="step"><button data-a="dec" data-id="'+m.id+'" aria-label="Remove one">−</button><b>'+q+'</b><button data-a="inc" data-id="'+m.id+'" aria-label="Add one">+</button></div>':'<button class="btn sm" data-a="inc" data-id="'+m.id+'">Add</button>';
+        return '<div class="card dish"><div class="ic">'+CATS.filter(function(c){return c.id===m.c})[0].e+'</div><div class="bd"><div class="nm">'+dot(m)+'<span>'+esc(m.n)+'</span></div><p>'+esc(m.d)+'</p><div class="tags"><span class="tag '+m.t+'">'+TLAB[m.t]+'</span>'+(m.g?'<span class="tag">'+esc(m.g)+'</span>':'')+'</div><div class="ft"><span class="price">'+inr(m.p)+'</span>'+ctl+'</div></div></div>';
+        }
+        function menuList(){
+        var q=UI.q.trim().toLowerCase(),h='';
+        CATS.forEach(function(c){
+        if(UI.cat!=='all'&&UI.cat!==c.id)return;
+        var it=MENU.filter(function(m){
+        if(m.c!==c.id)return false;
+        if(UI.diet==='v'&&m.t!=='v')return false;
+        if(UI.diet==='nv'&&m.t==='v')return false;
+        if((UI.diet==='c'||UI.diet==='m')&&m.t!==UI.diet)return false;
+        return !q||(m.n+' '+m.d).toLowerCase().indexOf(q)>-1});
+        if(!it.length)return;
+        h+='<div class="sec-title"><h2>'+c.e+' '+c.name+'</h2><span>'+it.length+' dishes</span></div><div class="grid g2">'+it.map(dishCard).join('')+'</div>';
+        });
+        $('#menuList').innerHTML=h||'<div class="empty">No dishes match your filters.</div>';
+        }
+        function needTable(){if(S.table)return false;toast('Please select your table number first');var p=$('.picker');if(p)p.scrollIntoView({behavior:'smooth',block:'center'});return true}
+
+        /* Order */
+        function rOrder(){
+        var t=S.table,h=picker();
+        if(!t){$('#v-order').innerHTML=h+'<div class="empty card">Select your table above to see your order and bill.</div>';return}
+        var c=cart(t),ids=Object.keys(c).filter(function(k){return c[k]>0}),sub=cartSub(t);
+        h+='<div class="twocol"><div>';
+        /* cart */
+        h+='<div class="card"><h3 style="font-size:20px;color:var(--maroon)">🛒 New order · Table '+t+'</h3>';
+        if(!ids.length)h+='<div class="empty">Your cart is empty.<br><button class="btn sm" style="margin-top:10px" data-a="go" data-v="menu">Browse menu</button></div>';
+        else{
+        ids.forEach(function(id){var m=BY[id];h+='<div class="line"><span>'+dot(m)+' '+esc(m.n)+'<br><small class="muted">'+inr(m.p)+' each</small></span><span class="row" style="flex-wrap:nowrap"><span class="step"><button data-a="dec" data-id="'+id+'" aria-label="Remove one">−</button><b>'+c[id]+'</b><button data-a="inc" data-id="'+id+'" aria-label="Add one">+</button></span><b style="min-width:60px;text-align:right">'+inr(m.p*c[id])+'</b></span></div>'});
+        h+='<label class="f" for="cName">Your name (optional)</label><input class="inp" id="cName" maxlength="40" value="'+esc(UI.draft.name)+'">';
+        h+='<label class="f" for="cNote">Cooking note (less spicy, no onion…)</label><textarea id="cNote" rows="2" maxlength="160">'+esc(UI.draft.note)+'</textarea>';
+        h+='<div style="margin-top:10px"><div class="tot"><span>Subtotal</span><span>'+inr(sub)+'</span></div><div class="tot"><span>GST 5%</span><span>'+inr(tax(sub))+'</span></div><div class="tot g"><span>Total</span><span>'+inr(sub+tax(sub))+'</span></div></div>';
+        h+='<div class="row" style="margin-top:12px"><button class="btn" data-a="place" style="flex:1">Place order for Table '+t+'</button><button class="btn ghost sm" data-a="clearCart">Clear</button></div>';
+        }
+        h+='</div>';
+        if(UI.paidMsg&&UI.paidMsg.table===t){
+        h+='<div class="ok" style="margin-top:12px"><b>'+(UI.paidMsg.method==='Cash'?'💵 Cash payment noted':'✅ Payment received')+'</b><br>'+inr(UI.paidMsg.amount)+' · '+UI.paidMsg.id+(UI.paidMsg.method==='Cash'?'<br>Please pay at the counter or hand cash to our staff.':'<br>Thank you for dining with us!')+'<div style="margin-top:8px"><button class="btn alt sm" data-a="toFb">Rate your experience</button></div></div>';
+        }
+        h+='</div><div>';
+        /* active orders */
+        var act=active(t).sort(function(a,b){return b.ts-a.ts});
+        h+='<div class="card"><h3 style="font-size:20px;color:var(--maroon)">⏱️ Your orders</h3>';
+        if(!act.length)h+='<div class="empty">No active orders for this table.</div>';
+        act.forEach(function(o){
+        var si=['Placed','Preparing','Served'].indexOf(o.status);
+        h+='<div class="line" style="display:block"><div class="hd row" style="justify-content:space-between"><b>'+o.id+'</b><span class="status st-'+o.status+'">'+(o.payId?'Cash pending':o.status)+'</span></div>';
+        h+='<div class="prog">'+[0,1,2].map(function(i){return '<i class="'+(i<=si?'on':'')+'"></i>'}).join('')+'</div>';
+        h+='<div class="muted">'+o.items.map(function(i){return i.q+'× '+esc(i.n)}).join(', ')+'</div>';
+        if(o.note)h+='<div class="muted">📝 '+esc(o.note)+'</div>';
+        h+='<div class="row" style="justify-content:space-between;margin-top:4px"><span class="muted">Ordered <b data-since="'+o.ts+'">0:00</b> min ago</span><b>'+inr(o.total)+'</b></div></div>';
+        });
+        h+='</div>';
+        /* bill */
+        var un=unpaid(t),due=sum(un,function(o){return o.total}),pc=pendingCash(t);
+        h+='<div class="card" style="margin-top:12px"><h3 style="font-size:20px;color:var(--maroon)">💳 Bill &amp; Payment</h3>';
+        if(pc.length)h+='<div class="warn" style="margin-top:8px">💵 Cash payment of <b>'+inr(sum(pc,function(o){return o.total}))+'</b> is waiting for staff to confirm.</div>';
+        if(!due)h+='<div class="empty">'+(pc.length?'':'Nothing to pay right now.')+'</div>';
+        else{
+        h+='<div class="tot g"><span>Amount due (incl. GST)</span><span>'+inr(due)+'</span></div>';
+        h+='<div class="pay-opts"><button class="pay-opt'+(UI.payMode==='online'?' on':'')+'" data-a="paymode" data-m="online"><span class="e">📲</span><b>Online (UPI)</b></button><button class="pay-opt'+(UI.payMode==='cash'?' on':'')+'" data-a="paymode" data-m="cash"><span class="e">💵</span><b>Cash</b></button></div>';
+        if(UI.payMode==='online'){
+        if(S.settings.upi){
+            var upi='upi://pay?pa='+encodeURIComponent(S.settings.upi)+'&pn='+encodeURIComponent('Punjabi Tadka')+'&am='+due.toFixed(2)+'&cu=INR&tn='+encodeURIComponent('Table '+t);
+            h+='<div class="qrbox">'+qr(upi,'UPI payment QR for '+inr(due),'L')+'</div><p class="muted" style="text-align:center;margin:6px 0">Scan with any UPI app · pay to <b>'+esc(S.settings.upi)+'</b></p>';
+        }else h+='<div class="warn">UPI ID is not set yet. Ask staff, or the owner can add it in Dashboard → Settings.</div>';
+        h+='<button class="btn" style="width:100%;margin-top:10px" data-a="payNow" data-m="Online">✅ I have paid '+inr(due)+'</button>';
+        }else h+='<p class="muted">Pay cash to our staff at the table or counter. Staff will confirm it.</p><button class="btn" style="width:100%;margin-top:6px" data-a="payNow" data-m="Cash">💵 Pay '+inr(due)+' in cash</button>';
+        }
+        h+='</div></div></div>';
+        $('#v-order').innerHTML=h;
+        }
+
+        /* Feedback */
+        function rFeedback(){
+        var msg='Hello Punjabi Tadka! Here is my feedback: ';
+        var link='https://wa.me/'+waNum()+'?text='+encodeURIComponent(msg);
+        var h='<div class="twocol eq"><div class="card" style="text-align:center"><h3 style="font-size:22px;color:var(--maroon)">Scan to give feedback on WhatsApp</h3><p class="muted" style="margin:4px 0 10px">Open your phone camera or WhatsApp scanner</p><div class="qrbox">'+qr(link,'WhatsApp feedback QR')+'</div>';
+        h+='<p class="muted" style="margin:8px 0">'+(waNum()?'Feedback goes to WhatsApp +'+esc(waNum()):'WhatsApp number not set yet — you will choose the contact in WhatsApp.')+'</p><a class="btn alt" href="'+link+'" target="_blank" rel="noopener">💬 Open WhatsApp</a></div>';
+        h+='<div class="card"><h3 style="font-size:22px;color:var(--maroon)">Rate your visit</h3>';
+        if(UI.lastFb){
+        var f=UI.lastFb;
+        h+='<div class="ok" style="margin-top:10px"><b>🙏 Thank you!</b> Your feedback is saved.<div style="margin-top:8px">Also send it on WhatsApp so the owner sees it instantly:</div><a class="btn sm" style="margin-top:8px" target="_blank" rel="noopener" href="'+waLink('Punjabi Tadka feedback\nTable: '+f.table+(f.name?'\nName: '+f.name:'')+'\nOverall: '+f.overall+'/5, Food: '+f.food+'/5, Service: '+f.service+'/5'+(f.comment?'\nComment: '+f.comment:''))+'">Send on WhatsApp</a> <button class="btn ghost sm" data-a="newFb">New feedback</button></div>';
+        }else{
+        h+='<label class="f" for="fbT">Table</label><select class="inp" id="fbT">';
+        for(var i=1;i<=TABLES;i++)h+='<option value="'+i+'"'+((UI.fbTable||S.table)==i?' selected':'')+'>Table '+i+'</option>';
+        h+='</select><label class="f" for="fbN">Name (optional)</label><input class="inp" id="fbN" maxlength="40">';
+        [['o','Overall experience'],['f','Food taste'],['s','Service']].forEach(function(r){
+        h+='<label class="f">'+r[1]+'</label><div class="stars" role="radiogroup" aria-label="'+r[1]+'">';
+        for(var n=1;n<=5;n++)h+='<button type="button" class="'+(UI.rate[r[0]]>=n?'on':'')+'" data-a="star" data-k="'+r[0]+'" data-n="'+n+'" aria-label="'+n+' star'+(n>1?'s':'')+'">⭐</button>';
+        h+='</div>'});
+        h+='<label class="f" for="fbC">Comments</label><textarea id="fbC" rows="3" maxlength="300" placeholder="What did you like? What can we improve?"></textarea><button class="btn" style="width:100%;margin-top:12px" data-a="submitFb">Submit feedback</button>';
+        }
+        h+='</div></div>';
+        $('#v-feedback').innerHTML=h;
+        }
+
+        /* PIN gate */
+        function gate(id,title){
+        $('#'+id).innerHTML='<div class="card" style="max-width:380px;margin:30px auto;text-align:center"><div style="font-size:38px">🔒</div><h3 style="font-size:22px;color:var(--maroon)">'+title+'</h3><p class="muted" style="margin:6px 0 12px">Staff only. Enter your PIN.</p><input class="inp" id="pin" type="password" inputmode="numeric" maxlength="8" placeholder="PIN" style="text-align:center;letter-spacing:6px"><button class="btn" style="width:100%;margin-top:10px" data-a="unlock">Unlock</button><p class="muted" style="margin-top:8px">Default PIN is 1234 — change it in Dashboard → Settings.</p></div>';
+        }
+
+        /* History */
+        function inRange(ts){return UI.histRange==='all'||dayKey(ts)===dayKey(Date.now())}
+        function rHistory(){
+        if(!UI.unlocked)return gate('v-history','History');
+        var tb=UI.histTable;
+        function ft(x){return tb==='all'||String(x.table)===tb}
+        var O=S.orders.filter(function(o){return ft(o)&&inRange(o.ts)}).sort(function(a,b){return b.ts-a.ts});
+        var P=S.payments.filter(function(o){return ft(o)&&inRange(o.ts)}).sort(function(a,b){return b.ts-a.ts});
+        var F=S.feedback.filter(function(o){return ft(o)&&inRange(o.ts)}).sort(function(a,b){return b.ts-a.ts});
+        var h='<div class="sec-title"><h2>History</h2><span>Orders · Payments · Feedback</span></div><div class="row" style="margin-bottom:10px">';
+        [['orders','🧾 Orders ('+O.length+')'],['payments','💳 Payments ('+P.length+')'],['feedback','💬 Feedback ('+F.length+')']].forEach(function(x){h+='<button class="pill'+(UI.hist===x[0]?' on':'')+'" data-a="htab" data-h="'+x[0]+'">'+x[1]+'</button>'});
+        h+='</div><div class="row" style="margin-bottom:12px"><select class="inp" id="hT" style="width:auto" aria-label="Filter table"><option value="all">All tables</option>';
+        for(var i=1;i<=TABLES;i++)h+='<option value="'+i+'"'+(tb===String(i)?' selected':'')+'>Table '+i+'</option>';
+        h+='</select><select class="inp" id="hR" style="width:auto" aria-label="Filter date"><option value="all"'+(UI.histRange==='all'?' selected':'')+'>All time</option><option value="today"'+(UI.histRange==='today'?' selected':'')+'>Today</option></select></div><div class="grid g2">';
+        if(UI.hist==='orders')O.forEach(function(o){h+='<div class="card rec"><div class="hd"><b>'+o.id+' · Table '+o.table+'</b><span class="status st-'+(o.paid?'Paid':o.status)+'">'+(o.paid?'Paid':o.status)+'</span></div><div class="sub">'+fmt(o.ts)+(o.name?' · '+esc(o.name):'')+'</div><div class="sub" style="color:var(--ink)">'+o.items.map(function(i){return i.q+'× '+esc(i.n)}).join(', ')+'</div>'+(o.note?'<div class="sub">📝 '+esc(o.note)+'</div>':'')+'<div class="hd" style="margin-top:4px"><span class="sub">incl. GST '+inr(o.gst)+'</span><b>'+inr(o.total)+'</b></div></div>'});
+        if(UI.hist==='payments')P.forEach(function(p){h+='<div class="card rec"><div class="hd"><b>'+p.id+' · Table '+p.table+'</b><span class="status st-'+(p.status==='Paid'?'Served':'Pending')+'">'+(p.status==='Paid'?'Paid':'Cash pending')+'</span></div><div class="sub">'+fmt(p.ts)+' · '+(p.method==='Cash'?'💵 Cash':'📲 Online (UPI)')+'</div><div class="sub">Orders: '+p.orderIds.join(', ')+'</div><div class="hd" style="margin-top:4px"><span></span><b>'+inr(p.amount)+'</b></div></div>'});
+        if(UI.hist==='feedback')F.forEach(function(f){h+='<div class="card rec"><div class="hd"><b>Table '+f.table+(f.name?' · '+esc(f.name):'')+'</b><span style="color:#d9a000;letter-spacing:1px">'+stars(f.overall)+'</span></div><div class="sub">'+fmt(f.ts)+' · Food '+f.food+'/5 · Service '+f.service+'/5</div>'+(f.comment?'<div class="sub" style="color:var(--ink)">“'+esc(f.comment)+'”</div>':'')+'</div>'});
+        var n={orders:O,payments:P,feedback:F}[UI.hist].length;
+        h+='</div>'+(n?'':'<div class="empty card">Nothing here yet.</div>');
+        $('#v-history').innerHTML=h;
+        }
+
+        /* Dashboard */
+        function bars(rows,cls,fmtv){
+        var mx=Math.max.apply(null,rows.map(function(r){return r.v}).concat([1]));
+        return rows.map(function(r){return '<div class="bar" title="'+esc(r.l)+': '+(fmtv?fmtv(r.v):r.v)+'"><span class="lb">'+esc(r.l)+'</span><span class="tr"><span class="fl '+(cls||'')+'" style="display:block;width:'+Math.round(r.v/mx*100)+'%"></span></span><span class="vl">'+(fmtv?fmtv(r.v):r.v)+'</span></div>'}).join('')||'<div class="empty">No data yet.</div>';
+        }
+        function rDash(){
+        if(!UI.unlocked)return gate('v-dashboard','Dashboard');
+        var today=dayKey(Date.now()),paidP=S.payments.filter(function(p){return p.status==='Paid'});
+        var revToday=sum(paidP.filter(function(p){return dayKey(p.ts)===today}),function(p){return p.amount});
+        var ordToday=S.orders.filter(function(o){return dayKey(o.ts)===today}).length;
+        var occ=0,T=[];for(var i=1;i<=TABLES;i++){var a=active(i),c=cartCount(i),pc=pendingCash(i).length;if(a.length||c)occ++;T.push({i:i,a:a,c:c,pc:pc})}
+        var rated=S.feedback.length?(sum(S.feedback,function(f){return f.overall})/S.feedback.length).toFixed(1):'–';
+        var cashDue=sum(S.payments.filter(function(p){return p.status!=='Paid'}),function(p){return p.amount});
+        var h='<div class="sec-title"><h2>Dashboard</h2><span>Today · '+today+'</span></div><div class="kpis">'+
+        [['Revenue today',inr(revToday)],['Orders today',ordToday],['Tables in use',occ+' / '+TABLES],['Avg rating',rated+(S.feedback.length?' ★':'')],['Cash to collect',inr(cashDue)],['Total revenue',inr(sum(paidP,function(p){return p.amount}))]].map(function(k){return '<div class="card kpi"><span>'+k[0]+'</span><b>'+k[1]+'</b></div>'}).join('')+'</div>';
+        h+='<div class="sec-title"><h2>Tables</h2><span>live status</span></div><div class="tgrid">'+T.map(function(t){
+        var cls=t.pc?' cash':(t.a.length||t.c?' busy':''),s=t.pc?'Cash pending':t.a.length?t.a.length+' order'+(t.a.length>1?'s':'')+' · '+inr(sum(t.a,function(o){return o.total})):t.c?'Ordering…':'Free';
+        return '<div class="tcell'+cls+'"><b>Table '+t.i+'</b>'+s+'</div>'}).join('')+'</div>';
+        /* queue */
+        var q=S.orders.filter(function(o){return !o.paid}).sort(function(a,b){return a.ts-b.ts});
+        h+='<div class="sec-title"><h2>Live orders</h2><span>'+q.length+' open</span></div><div class="grid g2">'+(q.map(function(o){
+        var nxt={Placed:'Preparing',Preparing:'Served'}[o.status];
+        return '<div class="card rec"><div class="hd"><b>'+o.id+' · Table '+o.table+'</b><span class="status st-'+o.status+'">'+o.status+'</span></div><div class="sub" style="color:var(--ink)">'+o.items.map(function(i){return i.q+'× '+esc(i.n)}).join(', ')+'</div>'+(o.note?'<div class="sub">📝 '+esc(o.note)+'</div>':'')+'<div class="hd" style="margin-top:6px"><span class="sub">⏱️ <b data-since="'+o.ts+'">0:00</b> · '+inr(o.total)+(o.payId?' · cash pending':'')+'</span>'+(nxt?'<button class="btn sm" data-a="adv" data-id="'+o.id+'">Mark '+nxt+'</button>':'')+'</div></div>'}).join('')||'<div class="empty card">No open orders.</div>')+'</div>';
+        var pend=S.payments.filter(function(p){return p.status!=='Paid'});
+        if(pend.length){h+='<div class="sec-title"><h2>Cash to confirm</h2></div><div class="grid g2">'+pend.map(function(p){return '<div class="card rec"><div class="hd"><b>'+p.id+' · Table '+p.table+'</b><b>'+inr(p.amount)+'</b></div><div class="hd" style="margin-top:6px"><span class="sub">'+fmt(p.ts)+'</span><button class="btn alt sm" data-a="cashok" data-id="'+p.id+'">Cash received</button></div></div>'}).join('')+'</div>'}
+        /* charts */
+        var days=[];for(i=6;i>=0;i--){var k=dayKey(Date.now()-i*864e5);days.push({l:k.slice(5).split('-').reverse().join('/'),v:sum(paidP.filter(function(p){return dayKey(p.ts)===k}),function(p){return p.amount}),k:k})}
+        var qty={},cat={},typ={v:0,nv:0};
+        S.orders.forEach(function(o){o.items.forEach(function(it){qty[it.n]=(qty[it.n]||0)+it.q;var m=BY[it.id]||{c:'thali',t:'v'};var cn=CATS.filter(function(c){return c.id===m.c})[0].name;cat[cn]=(cat[cn]||0)+it.p*it.q;typ[m.t==='v'?'v':'nv']+=it.p*it.q})});
+        var top=Object.keys(qty).map(function(k){return {l:k,v:qty[k]}}).sort(function(a,b){return b.v-a.v}).slice(0,6);
+        var cr=Object.keys(cat).map(function(k){return {l:k,v:cat[k]}}).sort(function(a,b){return b.v-a.v});
+        var pm=[{l:'Online (UPI)',v:sum(paidP.filter(function(p){return p.method==='Online'}),function(p){return p.amount})},{l:'Cash',v:sum(paidP.filter(function(p){return p.method==='Cash'}),function(p){return p.amount})}];
+        var starsDist=[5,4,3,2,1].map(function(n){return {l:n+' ★',v:S.feedback.filter(function(f){return f.overall===n}).length}});
+        h+='<div class="sec-title"><h2>Insights</h2></div><div class="grid g2">'+
+        '<div class="card"><b>Revenue · last 7 days</b>'+bars(days,'',inr)+'</div>'+
+        '<div class="card"><b>Top dishes (qty sold)</b>'+bars(top,'sf')+'</div>'+
+        '<div class="card"><b>Sales by category</b>'+bars(cr,'',inr)+'</div>'+
+        '<div class="card"><b>Veg vs Non-Veg sales</b>'+bars([{l:'Veg',v:typ.v},{l:'Non-Veg',v:typ.nv}],'sf',inr)+'<br><b>Payment mode</b>'+bars(pm,'',inr)+'</div>'+
+        '<div class="card"><b>Feedback ratings</b>'+bars(starsDist,'sf')+'</div></div>';
+        /* settings */
+        h+='<div class="sec-title"><h2>Settings</h2></div><div class="card"><div class="twocol eq"><div><label class="f" for="sWa">WhatsApp number for feedback (with country code, e.g. 919812345678)</label><input class="inp" id="sWa" inputmode="numeric" value="'+esc(S.settings.whatsapp)+'"><label class="f" for="sUpi">UPI ID for online payments</label><input class="inp" id="sUpi" value="'+esc(S.settings.upi)+'" placeholder="name@bank"></div><div><label class="f" for="sPin">Staff PIN (History &amp; Dashboard)</label><input class="inp" id="sPin" type="password" inputmode="numeric" maxlength="8" value="'+esc(S.settings.pin)+'"><div class="row" style="margin-top:16px"><button class="btn" data-a="saveSet">Save settings</button><button class="btn ghost" data-a="lock">Lock</button></div></div></div>'+
+        '<hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><div class="row"><button class="btn alt sm" data-a="sample">Load sample data</button><button class="btn ghost sm" data-a="unsample">Remove sample data</button><button class="btn ghost sm" style="color:var(--red);border-color:var(--red)" data-a="reset">'+(UI.confirmReset?'Tap again to erase EVERYTHING':'Erase all data')+'</button></div><p class="muted" style="margin-top:8px">Data is stored in this browser on this device.</p></div>';
+        $('#v-dashboard').innerHTML=h;
+        }
+
+        /* ---------- Actions ---------- */
+        function setQty(id,d){
+        if(needTable())return;
+        var c=cart(S.table),n=(c[id]||0)+d;
+        if(n<=0)delete c[id];else c[id]=Math.min(n,20);
+        save();
+        if(UI.view==='menu'){menuList();cartBar();badge()}else render();
+        }
+        function place(){
+        var t=S.table,c=cart(t),ids=Object.keys(c);
+        if(!ids.length)return;
+        var items=ids.map(function(id){return {id:id,n:BY[id].n,p:BY[id].p,q:c[id]}}),sub=cartSub(t),g=tax(sub);
+        var o={id:'PT-'+String(++S.seq).padStart(4,'0'),table:t,items:items,subtotal:sub,gst:g,total:sub+g,ts:Date.now(),status:'Placed',paid:false,note:UI.draft.note.trim(),name:UI.draft.name.trim()};
+        S.orders.push(o);S.carts[t]={};UI.draft={note:'',name:''};UI.paidMsg=null;save();toast('Order '+o.id+' placed for Table '+t+' ✔');render();
+        }
+        function payNow(method){
+        var t=S.table,un=unpaid(t);if(!un.length)return;
+        var amt=sum(un,function(o){return o.total}),id='PAY-'+String(++S.pseq).padStart(4,'0'),now=Date.now();
+        var p={id:id,table:t,orderIds:un.map(function(o){return o.id}),amount:amt,method:method,status:method==='Online'?'Paid':'Pending',ts:now};
+        S.payments.push(p);
+        un.forEach(function(o){o.payId=id;if(method==='Online'){o.paid=true;o.status='Paid'}});
+        UI.paidMsg={table:t,method:method,amount:amt,id:id};UI.fbTable=t;save();render();toast(method==='Online'?'Payment recorded ✔':'Cash payment noted ✔');
+        }
+        function cashOk(id){
+        var p=S.payments.filter(function(x){return x.id===id})[0];if(!p)return;
+        p.status='Paid';S.orders.forEach(function(o){if(o.payId===id){o.paid=true;o.status='Paid'}});save();render();toast('Cash received ✔');
+        }
+        function submitFb(){
+        if(!UI.rate.o){toast('Please give an overall star rating');return}
+        var f={id:'FB-'+String(S.feedback.length+1).padStart(4,'0'),table:+$('#fbT').value,name:$('#fbN').value.trim(),overall:UI.rate.o,food:UI.rate.f||UI.rate.o,service:UI.rate.s||UI.rate.o,comment:$('#fbC').value.trim(),ts:Date.now()};
+        S.feedback.push(f);UI.lastFb=f;UI.rate={o:0,f:0,s:0};save();render();toast('Thanks for your feedback ✔');
+        }
+        /* sample data */
+        function sampleData(){
+        var seed=7;function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
+        var names=['Amit','Priya','Rahul','Sneha','Vikram','Neha','Rohan','Anjali',''],cm=['Loved the butter chicken!','Great taste, quick service.','Paneer tikka was superb.','Mutton biryani is a must try.','Please add more seating.','Lassi was thick and cold.','Good value thali.','Little more salt in soup.'];
+        var now=Date.now();
+        for(var d=6;d>=0;d--){
+        var n=d===0?5:6+Math.floor(rnd()*7);
+        for(var k=0;k<n;k++){
+        var ts=now-d*864e5-Math.floor(rnd()*7*36e5)-(d===0?0:0)-36e5*0.2;
+        var t=1+Math.floor(rnd()*TABLES),items=[],cnt=2+Math.floor(rnd()*3),used={};
+        for(var j=0;j<cnt;j++){var m=MENU[Math.floor(rnd()*MENU.length)];if(used[m.id])continue;used[m.id]=1;items.push({id:m.id,n:m.n,p:m.p,q:1+Math.floor(rnd()*2)})}
+        var sub=sum(items,function(i){return i.p*i.q}),g=tax(sub),live=d===0&&k>=n-2;
+        var o={id:'PT-'+String(++S.seq).padStart(4,'0'),table:live?(k===n-1?7:3):t,items:items,subtotal:sub,gst:g,total:sub+g,ts:live?now-(k===n-1?4:12)*6e4:ts,status:live?(k===n-1?'Placed':'Preparing'):'Paid',paid:!live,note:'',name:names[Math.floor(rnd()*names.length)],sample:true};
+        S.orders.push(o);
+        if(!live){var meth=rnd()<.62?'Online':'Cash',p={id:'PAY-'+String(++S.pseq).padStart(4,'0'),table:o.table,orderIds:[o.id],amount:o.total,method:meth,status:'Paid',ts:o.ts+25*6e4,sample:true};o.payId=p.id;S.payments.push(p);
+            if(rnd()<.6){var r=3+Math.floor(rnd()*3);S.feedback.push({id:'FB-S'+S.feedback.length,table:o.table,name:o.name,overall:r,food:Math.min(5,r+(rnd()<.3?1:0)),service:Math.max(3,r-(rnd()<.3?1:0)),comment:cm[Math.floor(rnd()*cm.length)],ts:p.ts+36e5/4,sample:true})}}
+        }
+        }
+        }
+        function removeSample(){
+        S.orders=S.orders.filter(function(o){return !o.sample});S.payments=S.payments.filter(function(o){return !o.sample});S.feedback=S.feedback.filter(function(o){return !o.sample});
+        }
+
+        /* ---------- Events ---------- */
+        var H={
+        go:function(el){go(el.dataset.v)},
+        table:function(el){S.table=+el.dataset.n;UI.paidMsg=null;save();render()},
+        cat:function(el){UI.cat=el.dataset.c;if(UI.view!=='menu')go('menu');else{pills();menuList()}},
+        diet:function(el){UI.diet=el.dataset.d;pills();menuList()},
+        inc:function(el){setQty(el.dataset.id,1)},dec:function(el){setQty(el.dataset.id,-1)},
+        clearCart:function(){S.carts[S.table]={};save();render()},
+        place:place,
+        paymode:function(el){UI.payMode=el.dataset.m;render()},
+        payNow:function(el){payNow(el.dataset.m)},
+        toFb:function(){UI.lastFb=null;UI.fbTable=S.table;go('feedback')},
+        star:function(el){UI.rate[el.dataset.k]=+el.dataset.n;var keep={t:$('#fbT').value,n:$('#fbN').value,c:$('#fbC').value};UI.fbTable=keep.t;rFeedback();$('#fbN').value=keep.n;$('#fbC').value=keep.c},
+        submitFb:submitFb,
+        newFb:function(){UI.lastFb=null;render()},
+        unlock:function(){var v=$('#pin').value;if(v===String(S.settings.pin)){UI.unlocked=true;render()}else{toast('Wrong PIN');$('#pin').value=''}},
+        lock:function(){UI.unlocked=false;render()},
+        htab:function(el){UI.hist=el.dataset.h;render()},
+        adv:function(el){var o=S.orders.filter(function(x){return x.id===el.dataset.id})[0];if(o){o.status={Placed:'Preparing',Preparing:'Served'}[o.status]||o.status;save();render()}},
+        cashok:function(el){cashOk(el.dataset.id)},
+        saveSet:function(){S.settings.whatsapp=$('#sWa').value.trim();S.settings.upi=$('#sUpi').value.trim();var p=$('#sPin').value.trim();if(p.length<4){toast('PIN must be at least 4 digits');return}S.settings.pin=p;save();toast('Settings saved ✔')},
+        sample:function(){sampleData();save();render();toast('Sample data loaded')},
+        unsample:function(){removeSample();save();render();toast('Sample data removed')},
+        reset:function(){if(!UI.confirmReset){UI.confirmReset=true;render();setTimeout(function(){UI.confirmReset=false},4000);return}
+        var s=S.settings;S.orders=[];S.payments=[];S.feedback=[];S.carts={};S.seq=0;S.pseq=0;S.settings=s;UI.confirmReset=false;save();render();toast('All data erased')}
+        };
+        document.addEventListener('click',function(e){var el=e.target.closest('[data-a]');if(el&&H[el.dataset.a])H[el.dataset.a](el)});
+        document.addEventListener('input',function(e){
+        var id=e.target.id;
+        if(id==='q'){UI.q=e.target.value;menuList()}
+        else if(id==='cNote')UI.draft.note=e.target.value;
+        else if(id==='cName')UI.draft.name=e.target.value;
+        });
+        document.addEventListener('change',function(e){
+        if(e.target.id==='hT'){UI.histTable=e.target.value;render()}
+        if(e.target.id==='hR'){UI.histRange=e.target.value;render()}
+        });
+        document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.id==='pin')H.unlock()});
+
+        /* ---------- Init ---------- */
+        $('#mapTop').href=MAP;$('#mapFoot').href=MAP;$('#yr').textContent=new Date().getFullYear();
+        var m=/^#table-(\d+)$/.exec(location.hash||'');if(m&&+m[1]>=1&&+m[1]<=TABLES){S.table=+m[1];UI.view='menu'}
+        setInterval(tick,1000);
+        go(UI.view);
+        window.__PT={S:S,UI:UI,go:go};
+        })();
+        </script>
+        </body>
+        </html>
